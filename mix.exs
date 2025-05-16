@@ -28,7 +28,8 @@ defmodule ContentSecurityPolicy.MixProject do
     [
       {:plug, "~> 1.14"},
       {:phoenix_live_view, "~> 0.20.1"},
-      {:phoenix, "~> 1.7", optional: true}
+      {:phoenix, "~> 1.7", optional: true},
+      {:mix_audit, "~> 2.1", only: [:dev, :test], runtime: false}
     ]
   end
 end
