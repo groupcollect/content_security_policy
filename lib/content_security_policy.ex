@@ -128,12 +128,7 @@ defmodule ContentSecurityPolicy do
   def put_content_security_policy(conn, opts) when is_list(opts) do
     csp =
       opts
-      |> Keyword.has_key?(:default_src)
-      # credo:disable-for-next-line Credo.Check.Readability.BlockPipe
-      |> case do
-        false -> [default_src: "'self'"] ++ opts
-        true -> opts
-      end
+      |> Keyword.put_new(:default_src, "'self'")
       |> Enum.reduce([], fn {name, sources}, acc ->
         sources = List.wrap(sources)
 
